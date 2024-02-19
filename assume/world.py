@@ -684,30 +684,6 @@ class World:
         self.markets = {}
         self.unit_operators = {}
         self.forecast_providers = {}
-
-    def add_unit(
-        self,
-        id: str,
-        unit_type: str,
-        unit_operator_id: str,
-        unit_params: dict,
-        forecaster: Forecaster,
-    ) -> None:
-        """
-        Add a unit to the World instance.
-
-        This method checks if the unit operator exists, verifies the unit type, and ensures that the unit operator
-        does not already have a unit with the same id. It then creates bidding strategies for the unit and creates
-        the unit within the associated unit operator.
-
-        Args:
-            id (str): The identifier for the unit.
-            unit_type (str): The type of the unit.
-            unit_operator_id (str): The identifier of the unit operator.
-            unit_params (dict): Parameters specific to the unit.
-            forecaster (Forecaster): The forecaster associated with the unit.
-        """
-
         # check if unit operator exists
         self._validate_unit_addition(id, unit_type, unit_operator_id)
 
