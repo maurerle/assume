@@ -331,7 +331,6 @@ class PowerPlant(SupportsMinMax):
         # needed minimum + capacity_neg - what is already sold is actual minimum
         min_power = self.min_power + capacity_neg - base_load
         # min_power should be at least the heat demand at that time
-        min_power = min_power.clip(lower=heat_demand)
 
         available_power = self.forecaster.get_availability(self.id)[start:end_excl]
         # check if available power is larger than max_power and raise an error if so
@@ -345,7 +344,6 @@ class PowerPlant(SupportsMinMax):
         # remove what has already been bid
         max_power = max_power - base_load
         # make sure that max_power is > 0 for all timesteps
-        max_power = max_power.clip(lower=0)
 
         return min_power, max_power
 
