@@ -79,7 +79,7 @@ class NodalPricingInflexDemandRole(MarketRole):
                 "Load",
                 names,
                 bus=map(itemgetter("node_id"), sorted_demand_orders),
-                p_set=map(lambda o: -o["volume"], sorted_demand_orders)
+                p_set=map(lambda o: -o["volume"], sorted_demand_orders),
                 # XXX: does not respect cost of load
                 # marginal_cost=map(itemgetter("price"), sorted_demand_orders),
             )
