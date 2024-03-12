@@ -684,6 +684,10 @@ class World:
         self.markets = {}
         self.unit_operators = {}
         self.forecast_providers = {}
+
+    def __del__(self):
+        if isinstance(self.container, Container) and self.container.running:
+            self.loop.run_until_complete(self.container.shutdown())
         # check if unit operator exists
         self._validate_unit_addition(id, unit_type, unit_operator_id)
 
