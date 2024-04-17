@@ -400,7 +400,7 @@ class UnitsOperator(Role):
         t = time.time()
         from math import factorial
 
-        list1 = [factorial(i) for i in range(3000)]
+        #list1 = [factorial(i) for i in range(3000)]
 
         products = opening["products"]
         market = self.registered_markets[opening["market_id"]]
