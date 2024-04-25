@@ -400,7 +400,7 @@ class UnitsOperator(Role):
         t = time.time()
         from math import factorial
 
-        #list1 = [factorial(i) for i in range(3000)]
+        # list1 = [factorial(i) for i in range(3000)]
 
         products = opening["products"]
         market = self.registered_markets[opening["market_id"]]
@@ -698,4 +698,4 @@ class UnitsOperator(Role):
                 )
 
     async def on_stop(self):
-        logger.warning(f"operator duration was {self.whole_wait}")
+        logger.warning(f"operator {self.id} duration was {self.whole_wait}")
