@@ -194,3 +194,14 @@ if __name__ == "__main__":
         results = json.load(f)
 
     df = pd.read_json("runtime_tests.json")
+    df.columns = ["n", "m", "type", "time"]    
+    df["speedup"] = df["time"].iloc[0] / df["time"]
+    plt.figure(figsize=(10, 6))
+    plt.plot(df["n"], df["time"], label="wall time")
+    plt.xlabel("n Cores")
+    plt.ylabel("wall time in seconds")
+    plt.title("Speedup graph of simulation with 16 agents")
+    plt.legend()
+    plt.grid(True)
+    plt.savefig("scalability.svg")
+    plt.show()

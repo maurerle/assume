@@ -72,26 +72,28 @@ def compare_speedup(exponent=4):
         run_distrib(n, m)
         duration = time.time() - t
         results.append((n, m, "distrib", duration))
-
+        print(results)
     return results
 
 
 if __name__ == "__main__":
-    n = 8
-    m = 1
+    n = 1
+    m = 16
     print("start simulation with", n)
     t = time.time()
     run_distrib(n,m)
+    #run_sync(n*m)
     duration = time.time() - t
     print(duration)
 
     # results = compare_runtime(range(1,4))
-    #results = compare_speedup()
-    # print(results)
-    # import json
+#    results = compare_speedup(3)
+    print(results)
+    import json
+    results = [(1, 16, 'distrib', 41.697070837020874), (2, 8, 'distrib', 22.841883420944214), (4, 4, 'distrib', 13.114440679550171), (8, 2, 'distrib', 7.997715473175049), (16, 1, 'distrib', 5.697688341140747)]
 
-    # with open("runtime_tests.json", "w") as f:
-    #     json.dump(results, f, indent=4)
+    with open("runtime_tests.json", "w") as f:
+       json.dump(results, f, indent=4)
 
     # with open("runtime_tests.json", "r") as f:
     #     results = json.load(f)

@@ -133,7 +133,7 @@ class flexableEOMStorage(BaseStrategy):
             if price_forecast[start] >= average_price:
                 price = average_price / unit.efficiency_discharge
                 bid_quantity = max_power_discharge[start]
-            else:
+            else:   
                 price = average_price * unit.efficiency_charge
                 bid_quantity = max_power_charge[start]
 

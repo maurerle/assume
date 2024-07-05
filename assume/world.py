@@ -41,7 +41,7 @@ stdout_handler = logging.StreamHandler(stream=sys.stdout)
 handlers = [file_handler, stdout_handler]
 logging.basicConfig(level=logging.INFO, handlers=handlers)
 logging.getLogger("mango").setLevel(logging.WARNING)
-
+logging.getLogger("sqlalchemy").setLevel(logging.WARNING)
 
 class World:
     """
