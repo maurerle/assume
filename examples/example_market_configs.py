@@ -412,4 +412,6 @@ result_bids = clearing(self, input_bids)
 
 
 ### Auswertung Index - Benchmark
+# ID3
 # https://www.eex.com/fileadmin/EEX/Downloads/Trading/Specifications/Indeces/DE/20200131-indexbeschreibung-v009b-d-final-track-changes-data.pdf
+https://www.epexspot.com/en/indices#auction-price-indices
