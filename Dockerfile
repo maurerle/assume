@@ -6,6 +6,7 @@ FROM python:3.12-slim
 
 RUN useradd -m -s /bin/bash admin
 
+RUN apt update && apt install -y git
 RUN mkdir /src
 WORKDIR /src
 COPY README.md pyproject.toml .
