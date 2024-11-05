@@ -425,6 +425,13 @@ class PayAsBidContractRole(MarketRole):
         )
 
 
+# 1. multi-stage market -> clears locally, rejected_bids are pushed up a layer
+# 2. nodal pricing -> centralized market which handles different node_ids different - can also be used for country coupling
+# 3. nodal limited market -> clear by node_id, select cheapest generation orders from surrounding area up to max_capacity, clear market
+# 4. one sided market? - fixed demand as special case of two sided market
+# 5.
+
+
 def ppa(
     contract: dict,
     market_index: pd.Series,
