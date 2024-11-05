@@ -49,7 +49,7 @@ if run_amiris:
         conn.execute(query)
 
     for output_file in (Path("scenario") / scenario).glob("*.csv"):
-        with open(output_file, "r") as f:
+        with open(output_file) as f:
             df = pd.read_csv(f, sep=";", index_col="TimeStep", parse_dates=["TimeStep"])
         table_name = output_file.stem.lower()
         table_name = table_name[:63]
@@ -67,12 +67,12 @@ if run_assume:
     from assume.scenario.loader_amiris import load_amiris_async
 
     forecast_file = Path("scenario", scenario, "MeritOrderForecaster.csv")
-    with open(forecast_file, "r") as f:
+    with open(forecast_file) as f:
         forecast = pd.read_csv(
             f, sep=";", index_col="TimeStep", parse_dates=["TimeStep"]
         )
 
-    with open("../amiris-examples/Germany2019/timeseries/co2_price.csv", "r") as f:
+    with open("../amiris-examples/Germany2019/timeseries/co2_price.csv") as f:
         co2 = pd.read_csv(
             f,
             sep=";",
