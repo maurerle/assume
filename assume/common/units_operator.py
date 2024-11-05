@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 import logging
+import time
 from collections import defaultdict
 from datetime import datetime
 from itertools import groupby
@@ -57,6 +58,9 @@ class UnitsOperator(Role):
         opt_portfolio: tuple[bool, BaseStrategy] | None = None,
     ):
         super().__init__()
+        self.whole_wait = 0
+        self.market_feedback_duration = 0
+        self.bids_duration = 0
 
         self.available_markets = available_markets
         self.registered_markets: dict[str, MarketConfig] = {}
@@ -191,6 +195,7 @@ class UnitsOperator(Role):
             opening["start_time"],
             opening["end_time"],
         )
+
         self.context.schedule_instant_task(coroutine=self.submit_bids(opening, meta))
 
     def handle_market_feedback(self, content: ClearingMessage, meta: MetaDict) -> None:
@@ -201,6 +206,7 @@ class UnitsOperator(Role):
             content (ClearingMessage): The content of the clearing message.
             meta (MetaDict): The meta data of the market.
         """
+        t = time.time()
         logger.debug("%s got market result: %s", self.id, content)
         accepted_orders: Orderbook = content["accepted_orders"]
         rejected_orders: Orderbook = content["rejected_orders"]
@@ -210,9 +216,11 @@ class UnitsOperator(Role):
             order["market_id"] = content["market_id"]
 
         marketconfig = self.registered_markets[content["market_id"]]
+        # list1 = [factorial(i) for i in range(1000)]
         self.valid_orders[marketconfig.product_type].extend(orderbook)
         self.set_unit_dispatch(orderbook, marketconfig)
         self.write_actual_dispatch(marketconfig.product_type)
+        self.market_feedback_duration += time.time() - t
 
     def handle_registration_feedback(
         self, content: RegistrationMessage, meta: MetaDict
@@ -397,6 +405,9 @@ class UnitsOperator(Role):
         Note:
             This function will accommodate the portfolio optimization in the future.
         """
+        t = time.time()
+
+        # list1 = [factorial(i) for i in range(3000)]
 
         products = opening["products"]
         market = self.registered_markets[opening["market_id"]]
@@ -437,6 +448,7 @@ class UnitsOperator(Role):
             ),
             receiver_addr=market.addr,
         )
+        self.bids_duration += time.time() - t
 
     async def formulate_bids_portfolio(
         self, market: MarketConfig, products: list[tuple]
@@ -496,3 +508,8 @@ class UnitsOperator(Role):
                 orderbook.append(order)
 
         return orderbook
+
+    async def on_stop(self):
+        logger.warning(
+            f"operator {self.id} duration was {self.market_feedback_duration}"
+        )

@@ -45,6 +45,7 @@ stdout_handler = logging.StreamHandler(stream=sys.stdout)
 handlers = [file_handler, stdout_handler]
 logging.basicConfig(level=logging.INFO, handlers=handlers)
 logging.getLogger("mango").setLevel(logging.WARNING)
+logging.getLogger("sqlalchemy").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 
@@ -102,6 +103,8 @@ class World:
         distributed_role: bool | None = None,
     ) -> None:
         logging.getLogger("assume").setLevel(log_level)
+        self.whole = 0
+        self.logger = logging.getLogger(__name__)
         self.addr = addr
         self.container: Container = None
         self.distributed_role = distributed_role
@@ -599,14 +602,13 @@ class World:
         self.markets[f"{market_config.market_id}"] = market_config
 
     async def _step(self, container):
-        if self.distributed_role:
-            # TODO find better way than sleeping
-            # we need to wait, until the last step is executed correctly
-            await asyncio.sleep(0.04)
+        t = time.time()
         if self.distributed_role is not False:
             next_activity = await self.clock_manager.distribute_time()
         else:
             next_activity = self.clock.get_next_activity()
+
+        self.whole += time.time() - t
         if not next_activity:
             logger.info("simulation finished - no schedules left")
             return None
@@ -651,6 +653,7 @@ class World:
                     self.clock.set_time(end_ts)
                 prev_delta = delta
             pbar.close()
+        self.logger.error(f"wait_time is {self.whole}")
 
     def run(self):
         """
