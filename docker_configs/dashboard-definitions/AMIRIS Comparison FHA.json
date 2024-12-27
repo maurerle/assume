@@ -210,7 +210,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  wind_offshore AS \"ENTSO-E Offshore\",\n  wind_onshore AS \"ENTSO-E Onshore\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  wind_offshore AS \"ENTSO-E Offshore\",\n  wind_onshore AS \"ENTSO-E Onshore\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
           "refId": "B",
           "select": [
             [
@@ -519,7 +519,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  $__timeGroupAlias(index,$__interval),\n  avg(solar) AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nGROUP BY 1\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(index,$__interval),\n  avg(solar) AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nGROUP BY 1\nORDER BY 1",
           "refId": "B",
           "select": [
             [
@@ -854,7 +854,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  $__timeGroupAlias(index,$__interval),\n  \"biomass\" AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(index,$__interval),\n  \"biomass\" AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
           "refId": "B",
           "select": [
             [
@@ -1138,7 +1138,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  $__timeGroupAlias(index,$__interval),\n  (\"hydro_run-of-river_and_poundage\"+hydro_water_reservoir) AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+          "rawSql": "SELECT\n  $__timeGroupAlias(index,$__interval),\n  (\"hydro_run-of-river_and_poundage\"+hydro_water_reservoir) AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
           "refId": "B",
           "select": [
             [
@@ -1433,7 +1433,7 @@
               "hide": false,
               "metricColumn": "none",
               "rawQuery": true,
-              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  (\"fossil_brown_coal/lignite\") AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  (\"fossil_brown_coal/lignite\") AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
               "refId": "B",
               "select": [
                 [
@@ -1688,7 +1688,7 @@
               "hide": false,
               "metricColumn": "none",
               "rawQuery": true,
-              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  nuclear AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  nuclear AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
               "refId": "B",
               "select": [
                 [
@@ -1961,7 +1961,7 @@
               "hide": false,
               "metricColumn": "none",
               "rawQuery": true,
-              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  fossil_oil AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  fossil_oil AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
               "refId": "B",
               "select": [
                 [
@@ -2217,7 +2217,7 @@
               "hide": false,
               "metricColumn": "none",
               "rawQuery": true,
-              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  fossil_hard_coal AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  fossil_hard_coal AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
               "refId": "B",
               "select": [
                 [
@@ -2473,7 +2473,7 @@
               "hide": false,
               "metricColumn": "none",
               "rawQuery": true,
-              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  fossil_gas AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  fossil_gas AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
               "refId": "B",
               "select": [
                 [
@@ -2812,7 +2812,7 @@
               "format": "table",
               "hide": false,
               "rawQuery": true,
-              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  hydro_pumped_storage AS \"ENTSO-E Data\"\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
+              "rawSql": "SELECT\n  $__timeGroupAlias(index,1h),\n  hydro_pumped_storage AS \"ENTSO-E Data\"\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\nORDER BY 1",
               "refId": "C",
               "sql": {
                 "columns": [
@@ -3051,7 +3051,7 @@
               "group": [],
               "metricColumn": "none",
               "rawQuery": true,
-              "rawSql": "SELECT\n  index AS \"time\",\n  (biomass+solar+\"fossil_gas\"+\"fossil_brown_coal/lignite\"+\"fossil_oil\"+\"fossil_hard_coal\"+geothermal+other+waste+\"wind_offshore\"+\"wind_onshore\"+nuclear)*1e3 as total_entsoe\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = 'DE'\nORDER BY 1",
+              "rawSql": "SELECT\n  index AS \"time\",\n  (biomass+solar+\"fossil_gas\"+\"fossil_brown_coal/lignite\"+\"fossil_oil\"+\"fossil_hard_coal\"+geothermal+other+waste+\"wind_offshore\"+\"wind_onshore\"+nuclear)*1e3 as total_entsoe\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = 'DE'\nORDER BY 1",
               "refId": "A",
               "select": [
                 [
@@ -3084,7 +3084,7 @@
               "hide": false,
               "metricColumn": "none",
               "rawQuery": true,
-              "rawSql": "SELECT\n  index AS \"time\",\n  nuclear*1e3 as nuclear,\n  \"fossil_hard_coal\"*1e3 as coal,\n  (\"hydro_run-of-river_and_poundage\"+hydro_water_reservoir)*1e3 as water,\n  biomass*1e3 as bio,\n  (\"fossil_coal-derived_gas\"+\"fossil_gas\")*1e3 as gas,\n  (fossil_oil+coalesce(fossil_oil_shale,0)+coalesce(fossil_peat,0)+\"fossil_brown_coal/lignite\")*1e3 as lignite,\n  (\"wind_offshore\"+\"wind_onshore\")*1e3 as wind,\n  solar*1e3 as solar,\n  (geothermal+other+waste)*1e3 as others\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = 'DE'\nORDER BY 1",
+              "rawSql": "SELECT\n  index AS \"time\",\n  nuclear*1e3 as nuclear,\n  \"fossil_hard_coal\"*1e3 as coal,\n  (\"hydro_run-of-river_and_poundage\"+hydro_water_reservoir)*1e3 as water,\n  biomass*1e3 as bio,\n  (\"fossil_coal-derived_gas\"+\"fossil_gas\")*1e3 as gas,\n  (fossil_oil+coalesce(fossil_oil_shale,0)+coalesce(fossil_peat,0)+\"fossil_brown_coal/lignite\")*1e3 as lignite,\n  (\"wind_offshore\"+\"wind_onshore\")*1e3 as wind,\n  solar*1e3 as solar,\n  (geothermal+other+waste)*1e3 as others\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = 'DE'\nORDER BY 1",
               "refId": "B",
               "select": [
                 [
@@ -6575,7 +6575,7 @@
               "group": [],
               "metricColumn": "country",
               "rawQuery": true,
-              "rawSql": "SELECT\n  $__timeGroupAlias(\"index\",$__interval),\n  avg(biomass) as biomass,\n  avg(fossil_hard_coal) as fossil_hard_coal,\n  avg(geothermal) as geothermal,\n  avg(nuclear) as nuclear,\n  avg(\"fossil_brown_coal/lignite\") as \"fossil_brown_coal/lignite\",\n  avg(\"fossil_coal-derived_gas\") as \"fossil_coal-derived_gas\",\n  avg(\"hydro_run-of-river_and_poundage\") as \"hydro_run-of-river_and_poundage\",\n  avg(waste) as waste,\n  avg(solar) as solar,\n  avg(wind_offshore) as wind_offshore,\n  avg(wind_onshore) as wind_onshore,\n  avg(other_renewable) as other_renewable,\n  avg(hydro_water_reservoir) as hydro_water_reservoir,\n  avg(fossil_gas) as fossil_gas\nFROM query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\ngroup by 1\nORDER BY 1,2\n",
+              "rawSql": "SELECT\n  $__timeGroupAlias(\"index\",$__interval),\n  avg(biomass) as biomass,\n  avg(fossil_hard_coal) as fossil_hard_coal,\n  avg(geothermal) as geothermal,\n  avg(nuclear) as nuclear,\n  avg(\"fossil_brown_coal/lignite\") as \"fossil_brown_coal/lignite\",\n  avg(\"fossil_coal-derived_gas\") as \"fossil_coal-derived_gas\",\n  avg(\"hydro_run-of-river_and_poundage\") as \"hydro_run-of-river_and_poundage\",\n  avg(waste) as waste,\n  avg(solar) as solar,\n  avg(wind_offshore) as wind_offshore,\n  avg(wind_onshore) as wind_onshore,\n  avg(other_renewable) as other_renewable,\n  avg(hydro_water_reservoir) as hydro_water_reservoir,\n  avg(fossil_gas) as fossil_gas\nFROM entsoe.query_generation\nWHERE\n  $__timeFilter(index) AND\n  country = '$country_benchmark'\ngroup by 1\nORDER BY 1,2\n",
               "refId": "A",
               "select": [
                 [

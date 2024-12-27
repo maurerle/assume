@@ -26,15 +26,15 @@ datasources:
     timescaledb: true
   isDefault: true
   editable: true
-- name: ENTSOE
+- name: Open-Data
   type: postgres
-  url: 149.201.141.3:5432
+  url: timescale.nowum.fh-aachen.de:5432
   user: readonly
-  database: entsoe
+  database: opendata
   secureJsonData:
     password: readonly
   jsonData:
     sslmode: "verify-ca"
-    postgresVersion: 1200
+    postgresVersion: 1600
     timescaledb: true
   editable: true
