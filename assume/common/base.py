@@ -288,10 +288,7 @@ class BaseUnit:
                     order.get("accepted_price", 0) * order.get("accepted_volume", 0)
                 )
 
-            elapsed_intervals = (end - start) / self.index.freq
-            self.outputs[f"{product_type}_cashflow"].loc[start:end_excl] += (
-                cashflow * elapsed_intervals
-            )
+            self.outputs[f"{product_type}_cashflow"].loc[start:end_excl] += cashflow
 
     def get_starting_costs(self, op_time: int) -> float:
         """

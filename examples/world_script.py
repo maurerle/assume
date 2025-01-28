@@ -37,7 +37,7 @@ def init(world, n=1):
             ),
             opening_duration=timedelta(hours=1),
             market_mechanism="pay_as_clear",
-            market_products=[MarketProduct(timedelta(hours=1), 24, timedelta(hours=1))],
+            market_products=[MarketProduct(timedelta(hours=24), 1, timedelta(hours=1))],
             additional_fields=["block_id", "link", "exclusive_id"],
         )
     ]
@@ -58,6 +58,7 @@ def init(world, n=1):
             "max_power": 1000,
             "bidding_strategies": {"EOM": "naive_eom"},
             "technology": "demand",
+            "price": 20,
         },
         NaiveForecast(index, demand=1000),
     )

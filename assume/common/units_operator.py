@@ -364,6 +364,14 @@ class UnitsOperator(Role):
             return
         self.last_sent_dispatch[product_type] = self.context.current_timestamp
 
+        # TODO - get_actual_dispatch does send zeros for financial_support
+        # as this has to be evaluated in the past and sets other values than 
+        # at the time of evaluation.
+        # get_actual_dispatch does adhere to the product_type for market_dispatch
+        # but does send the whole unit_dispatch, which is duplicated if multiple different products
+        # exist.
+        # This can be fixed by switching unit_dispatch table in outputs to long format instead of wide table
+        # Alternatively, just add the sum for the next hour as a bulk - to not overwrite history
         market_dispatch, unit_dispatch = self.get_actual_dispatch(product_type, last)
 
         now = timestamp2datetime(self.context.current_timestamp)

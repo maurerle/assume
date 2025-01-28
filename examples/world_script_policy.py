@@ -68,6 +68,23 @@ def init(world: World):
             ],
             product_type="financial_support",
             supports_get_unmatched=True,
+            param_dict={
+                "allowed_contracts": ["MPVAR", "MPFIX", "CFD"]
+            },
+        ),
+        MarketConfig(
+            "SupportEnergy",
+            rr.rrule(rr.MONTHLY, dtstart=start, until=end),
+            timedelta(hours=1),
+            "pay_as_bid_contract",
+            additional_fields=[
+                "sender_id",
+                "contract",
+                "eligible_lambda",
+                "evaluation_frequency",  # monthly
+            ],
+            product_type="energy_cashflow",
+            supports_get_unmatched=True,
             param_dict={"allowed_contracts": ["MPVAR", "MPFIX", "CFD"]},
         ),
         MarketConfig(
@@ -142,6 +159,7 @@ def init(world: World):
         },
         nuclear_forecast,
     )
+
 
 
 if __name__ == "__main__":
